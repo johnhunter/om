@@ -13,23 +13,24 @@ test('Module loaded in global context', function() {
 });
 
 test('Module has expected public methods.', function() {
-	expect(11);
+	expect(12);
 	
 	function isFunc (ref) {
 		return typeof ref === 'function';
 	} 
 	
-	ok(isFunc(om.qAll),'qAll method exists.');
-	ok(isFunc(om.qOne),'qFirst method exists.');
-	ok(isFunc(om.qId),'qId method exists.');
-	ok(isFunc(om.qTag),'qTag method exists.');
-	ok(isFunc(om.hasClass),'hasClass method exists.');
-	ok(isFunc(om.addClass),'addClass method exists.');
-	ok(isFunc(om.removeClass),'removeClass method exists.');
-	ok(isFunc(om.toggleClass),'toggleClass method exists.');
-	ok(isFunc(om.css),'css method exists.');
-	ok(isFunc(om.toArray),'toArray method exists.'); 
-	ok(isFunc(om.extend),'extend method exists.');
+	ok(isFunc(om.qAll), 'qAll method exists.');
+	ok(isFunc(om.qOne), 'qFirst method exists.');
+	ok(isFunc(om.qId), 'qId method exists.');
+	ok(isFunc(om.qTag), 'qTag method exists.');
+	ok(isFunc(om.hasClass), 'hasClass method exists.');
+	ok(isFunc(om.addClass), 'addClass method exists.');
+	ok(isFunc(om.removeClass), 'removeClass method exists.');
+	ok(isFunc(om.toggleClass), 'toggleClass method exists.');
+	ok(isFunc(om.css), 'css method exists.');
+	ok(isFunc(om.toArray), 'toArray method exists.');
+	ok(isFunc(om.extend), 'extend method exists.');
+	ok(isFunc(om.each), 'each method exists.');
 });
 
 test('Test utility methods', function() {
@@ -37,8 +38,8 @@ test('Test utility methods', function() {
 	
 	var testArray = (function () { return om.toArray(arguments); }(1,2,3,4));
 	
-	equal(
-		'1234', testArray.join(''),
+	deepEqual(
+		[1,2,3,4], testArray,
 		'toArray returns an Array instance with correct values');
 	
 	var target = { 
