@@ -60,6 +60,20 @@ test('Test utility methods', function() {
 	
 });
 
+test('Test each method', function() {
+	expect(1);
+	
+	var arr = [1,2,3,4];
+	var result = [];
+	
+	om.each(arr, function (val, i, thisp) {
+		if (thisp === this) result[i] = val;
+	});
+	
+	deepEqual(arr, result, 'each iterates over an array like list.');
+	
+});
+
 test('Test dom queries', function() {
 	expect(6);
 	
@@ -151,5 +165,33 @@ test('Test css styles', function() {
 	});
 	
 	ok(!el.style.backgroundColor, 'Element background-color style removed');
+	
+});
+
+test('Test iterative dom methods', function () {
+	expect(3);
+	
+	var before, after;
+	
+	before = om.qAll('#content li');
+	om.addClass(before, 'active');
+	after = om.qAll('#content li.active');
+	
+	deepEqual(after, before,
+		'Correctly adding class on a collection of elements.');
+		
+	om.removeClass(before, 'active');
+	
+	after = om.qAll('#content li.active');
+	
+	ok(after.length === 0,
+		'Correctly removing class on a collection of elements.');
+	
+	om.css(before, { backgroundColor: 'green' });
+	after = om.qAll('#content li[style^=background-color]')
+	
+	deepEqual(after, before,
+		'Correctly adding css styles on a collection of elements.');
+	
 	
 });
