@@ -194,5 +194,22 @@ test('Test iterative dom methods', function () {
 	deepEqual(after, before,
 		'Correctly adding css styles on a collection of elements.');
 	
+});
+
+test('Test template subs method', function () {
+	expect(1);
+	
+	var template = '<a href="{$url}">{$text}</a>',
+		expected = '<a href="#foo">this is foo</a>',
+		output = om.subs(template, {
+			url: '#foo',
+			text: 'this is foo'
+		});
+		
+	equal(
+		output,
+		expected,
+		'Correctly substituting text from properties object.'
+	);
 	
 });

@@ -1,32 +1,14 @@
 /**
-	om.js - some general dom sugar used when a framework is ovekill.
-	Assumes support for DOM Selector API
+	om.js - a really simple DOM framework 
+	<https://github.com/johnhunter/om>
 
 	@author       John Hunter for johnhunter.info
-	@version      1.1 (2011-03-26)
+	@version      1.2 (2011-03-28)
 	Created       2011-03-19
 	Licence       CC-BSD (2011) <http://creativecommons.org/licenses/BSD/>
 	
-	@dependency   none
+	@dependency   none. Assumes support for DOM Selector API
 	
-	qAll(selector [,context])    returns an array of dom elements for the css selector
-	qOne(selector [,context])    returns first dom element for the css selector
-	qId(id)                      returns dom element for id
-	qTag(name [,context])        returns an array of dom elements for the given tagname
-	hasClass(el, name)           returns true if el has a class of name
-	addClass(el, name)           adds class name to el (or el array)
-	removeClass(el, name)        removes class name from el (or el array)
-	toggleClass(el, name)        toggles class name on el (or el array)
-	css(el, styles)              apply the styles object properties to el (or el array)
-	toArray(o)                   converts o to an array
-	isArray(o)                   test if o is an array
-	extend(target, source)       add source object properties to target, returning target
-	each(list, callback)         an iterator for arrays
-	
-	Note: if you need futher functionality for iOS consider using http://xuijs.com
-	
-	TODO: add an each iterator
-	TODO: allow some methods to take an array of elements.
 	
 **/
 (function (doc, win) {
@@ -164,6 +146,15 @@
 		}	
 	}
 	
+	function subs (str, props) {
+		return str.replace(/{\$([^{}]*)}/g,
+	        function (a, b) {
+	            var r = props[b];
+	            return typeof r === 'string' || typeof r === 'number' ? r : a;
+	        }
+	    );
+	}
+	
 	
 	
 	win[moduleName] = {
@@ -179,7 +170,8 @@
 		toArray: toArray,
 		isArray: isArray,
 		extend: extend,
-		each: each
+		each: each,
+		subs: subs
 	};
 	
 }(document, window));
