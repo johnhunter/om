@@ -13,7 +13,7 @@ test('Module loaded in global context', function() {
 });
 
 test('Module has expected public methods.', function() {
-	expect(12);
+	expect(13);
 	
 	function isFunc (ref) {
 		return typeof ref === 'function';
@@ -31,6 +31,7 @@ test('Module has expected public methods.', function() {
 	ok(isFunc(om.toArray), 'toArray method exists.');
 	ok(isFunc(om.extend), 'extend method exists.');
 	ok(isFunc(om.each), 'each method exists.');
+	ok(isFunc(om.subs), 'subs method exists.');
 });
 
 test('Test utility methods', function() {
