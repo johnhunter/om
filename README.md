@@ -7,6 +7,8 @@ om.js is a simple framework for working with the DOM. It is primarily intended f
 * Recursive methods to access element classname and style properties.
 * Aliasing existing DOM query methods (makes no attempt to normalise browsers)
 
+The framework is organised in a single `om` global object. If a global property with this name already exists then the framework falls back to the name `jhi_om`.
+
 If the framework does not provide the functionality you need then you should consider using fuller featured frameworks such as [jQuery](http://jquery.com/) or [XUI](http://xuijs.com/).
 
 ## Use ##
