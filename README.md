@@ -44,6 +44,7 @@ If the framework does not provide the functionality you need then you should con
 * `extend(target, source)`      - add source object properties to target, returning target
 * `each(list, callback)`        - an iterator for arrays
 * `subs(str, props)`            - substitute properties of props object into template str `"{$prop}"`
+* `trim(str)`                   - trim leading / trailing whitespace from str
 
 
 ## Properties ##
