@@ -3,7 +3,7 @@
 	<https://github.com/johnhunter/om>
 
 	@author       John Hunter for johnhunter.info
-	@version      1.2 (2011-03-28)
+	@version      1.3 (2011-03-30)
 	Created       2011-03-19
 	Licence       CC-BSD (2011) <http://creativecommons.org/licenses/BSD/>
 	
@@ -71,7 +71,11 @@
 	
 	function removeClass (el, name) {
 		if (!isArray(el)) {
-			el.className = el.className.replace(RegExp('\\s+' + name), '');
+			var s = ' ',
+				classes = s + el.className + s;
+			
+			classes = classes.replace(s + name + s, s);
+			el.className = trim(classes);
 		}
 		else {
 			each(el, function (v) { removeClass(v, name); });
@@ -155,7 +159,13 @@
 	    );
 	}
 	
-	
+	function trim (str) {
+		str += '';
+		if (String.prototype.trim) {
+			return str.trim();
+		}
+		return str.replace(/^\s+/, '').replace(/\s+$/, '');
+	}
 	
 	win[moduleName] = {
 		qAll: qAll,
@@ -171,7 +181,8 @@
 		isArray: isArray,
 		extend: extend,
 		each: each,
-		subs: subs
+		subs: subs,
+		trim: trim
 	};
 	
 }(document, window));

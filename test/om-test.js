@@ -13,7 +13,7 @@ test('Module loaded in global context', function() {
 });
 
 test('Module has expected public methods.', function() {
-	expect(13);
+	expect(14);
 	
 	function isFunc (ref) {
 		return typeof ref === 'function';
@@ -32,10 +32,11 @@ test('Module has expected public methods.', function() {
 	ok(isFunc(om.extend), 'extend method exists.');
 	ok(isFunc(om.each), 'each method exists.');
 	ok(isFunc(om.subs), 'subs method exists.');
+	ok(isFunc(om.trim), 'trim method exists.');
 });
 
 test('Test utility methods', function() {
-	expect(3);
+	expect(4);
 	
 	var testArray = (function () { return om.toArray(arguments); }(1,2,3,4));
 	
@@ -59,6 +60,11 @@ test('Test utility methods', function() {
 		'extend correctly extended object properties.');
 	
 	ok(target === targetRef, 'extend modifies target and returns target ref');
+	
+	equal(
+		om.trim('   	 this is a test string 	'),
+		'this is a test string',
+		'trim correctly trims whitespace from string')
 	
 });
 
