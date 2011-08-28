@@ -124,10 +124,14 @@
 	}
 	
 	function isArray (o) {
-		// NOTE fallback is not always accurate:
-		// see: <https://developer.mozilla.org/web-tech/2010/07/26/determining-with-absolute-accuracy-whether-or-not-a-javascript-object-is-an-array>
 		if (Array.isArray) return Array.isArray(o);
-		return Object.prototype.toString.call(o) === '[object Array]';
+		return type(o) === 'array';
+	}
+	
+	function type (val) {
+	    if (typeof val === 'undefined') return 'undefined';
+	    if (typeof val === 'object' && !val) return 'null';
+	    return ({}).toString.call(val).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
 	}
 	
 	function each (list, fn) {
@@ -178,6 +182,7 @@
 		toggleClass: toggleClass,
 		css: css,
 		toArray: toArray,
+		type: type,
 		isArray: isArray,
 		extend: extend,
 		each: each,

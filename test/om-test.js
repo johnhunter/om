@@ -68,6 +68,23 @@ test('Test utility methods', function() {
 	
 });
 
+test('Test type method', function () {
+	expect(11);
+	
+	ok(om.type('string') === 'string',           'Type identified as string.');
+	ok(om.type(9) === 'number',                  'Type identified as number.');
+	ok(om.type(true) === 'boolean',              'Type identified as boolean.');
+	ok(om.type([]) === 'array',                  'Type identified as array.');
+	ok(om.type({}) === 'object',                 'Type identified as object.');
+	ok(om.type(null) === 'null',                 'Type identified as null.');
+	ok(om.type(undefined) === 'undefined',       'Type identified as undefined.');
+	ok(om.type(function(){}) === 'function',     'Type identified as function.');
+	ok(om.type(new Date()) === 'date',           'Type identified as date.');
+	ok(om.type(new RegExp('a-z')) === 'regexp',  'Type identified as regexp.');
+	ok(om.type(new Error()) === 'error',         'Type identified as error.'); 	
+	
+});
+
 test('Test each method', function() {
 	expect(1);
 	
